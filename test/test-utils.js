@@ -1,30 +1,28 @@
-import React from 'react';
-import { render as rtlRender } from '@testing-library/react';
-import { createStore } from 'redux';
-import { Provider } from 'react-redux';
+import React from "react";
+import { render as rtlRender } from "@testing-library/react";
+import { createStore } from "redux";
+import { Provider } from "react-redux";
 import {
   createHistory,
   createMemorySource,
   LocationProvider,
-} from '@reach/router';
-import reducer from '../src/redux/reducers';
+} from "@reach/router";
+import reducer from "../src/redux/reducers";
 
 function render(
   ui,
   {
     initialState,
     store = createStore(reducer, initialState),
-    route = '/',
+    route = "/",
     history = createHistory(createMemorySource(route)),
     ...renderOptions
-  } = {},
+  } = {}
 ) {
   function Wrapper({ children }) {
     return (
       <LocationProvider history={history}>
-        <Provider store={store}>
-          {children}
-        </Provider>
+        <Provider store={store}>{children}</Provider>
       </LocationProvider>
     );
   }
@@ -38,6 +36,8 @@ function render(
 }
 
 // re-export everything
-export * from '@testing-library/react';
+export * from "@testing-library/react";
+// export jest-dom for extended matchers
+export * from '@testing-library/jest-dom';
 // override render method
 export { render };

@@ -4,7 +4,10 @@ export interface SampleState {
   counter: number;
 }
 
-export type SampleAction = unknown;
+export type SampleAction = {
+  type:string,
+  count:number
+};
 
 const initialState: SampleState = {
   counter: 0,
